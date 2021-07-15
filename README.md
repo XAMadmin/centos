@@ -58,6 +58,14 @@ service network restart
 curl -fsSL https://get.docker.com | bash -s docker --mirror aliyun
 启动docker：
 sudo systemctl start docker
+下载redis镜像文件
+docker pull redis
+下载官方redis-conf配置文件
+wget -P /home/hyjy http://download.redis.io/redis-stable/redis.conf
+创建容器并后台运行
+docker run -itd --name redis-test -p 6379:6379 redis -bind 0.0.0.0 --damonize NO --protected-mode no
+需要配置密码则加上--requirepass '输入指定的密码'
+
 ```
 
 ##### 4. centos开机自启
